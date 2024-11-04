@@ -16,12 +16,10 @@ export default function Home() {
             client={client}
             appMetadata={{
               name: "Example App",
-              url: "https://example.com",
+              url: "localhost:3000",
             }}
           />
         </div>
-
-        <ThirdwebResources />
       </div>
     </main>
   );
