@@ -21,14 +21,7 @@ export default function Home() {
 const wallets = [
   inAppWallet({
     auth: {
-      options: [
-        "telegram",
-        "farcaster",
-        "email",
-        "x",
-        "passkey",
-        "phone",
-      ],
+      options: ["telegram", "farcaster", "email", "x", "passkey", "phone"],
     },
   }),
   createWallet("io.metamask"),
@@ -36,6 +29,7 @@ const wallets = [
   createWallet("me.rainbow"),
   createWallet("io.rabby"),
   createWallet("io.zerion.wallet"),
+  createWallet("com.okex.wallet"),
 ];
 
 function Example() {

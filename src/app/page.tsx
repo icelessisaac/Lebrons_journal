@@ -1,17 +1,23 @@
 "use client";
 
 import Image from "next/image";
-import { ConnectButton } from "thirdweb/react";
+import { ConnectButton, useActiveAccount } from "thirdweb/react";
 import thirdwebIcon from "@public/thirdweb.svg";
 import { client } from "./client";
 
+import { ActiveAcc } from "@/components/activeAcc";
+
 export default function Home() {
+  // 使用 useActiveAccount 钩子来检查用户是否已连接钱包
+  const activeAccount = useActiveAccount();
+
   return (
     <main className="p-4 pb-10 min-h-[100vh] flex items-center justify-center container max-w-screen-lg mx-auto">
       <div className="py-20">
         <Header />
 
-        <div className="flex justify-center mb-20">
+        <div className="flex flex-col items-center mb-20">
+          {/* ConnectButton 连接按钮 */}
           <ConnectButton
             client={client}
             appMetadata={{
@@ -19,6 +25,9 @@ export default function Home() {
               url: "localhost:3000",
             }}
           />
+
+          {/* 只有在钱包连接后才显示 ActiveAcc 组件 */}
+          {activeAccount && <ActiveAcc />}
         </div>
       </div>
     </main>
