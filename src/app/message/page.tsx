@@ -1,6 +1,9 @@
+"use client";
+import { createThirdwebClient } from "thirdweb";
+import { ConnectButton } from "thirdweb/react";
 
-import { useConnect } from "thirdweb/react";
-import { createWallet, injectedProvider } from "thirdweb/wallets";
+import { inAppWallet, createWallet } from "thirdweb/wallets";
+
 import { client } from "../client";
 
 export default function Home() {
@@ -15,33 +18,32 @@ export default function Home() {
   );
 }
 
+const wallets = [
+  inAppWallet({
+    auth: {
+      options: [
+        "telegram",
+        "farcaster",
+        "email",
+        "x",
+        "passkey",
+        "phone",
+      ],
+    },
+  }),
+  createWallet("io.metamask"),
+  createWallet("com.coinbase.wallet"),
+  createWallet("me.rainbow"),
+  createWallet("io.rabby"),
+  createWallet("io.zerion.wallet"),
+];
+
 function Example() {
-  const { connect, isConnecting, error } = useConnect();
   return (
-    <button
-      onClick={() =>
-        connect(async () => {
-          const wallet = createWallet("com.okex.wallet"); // pass the wallet id
-
-          // if user has wallet installed, connect to it
-          if (injectedProvider("com.okex.wallet")) {
-            await wallet.connect({ client });
-          }
-
-          // open WalletConnect modal so user can scan the QR code and connect
-          else {
-            await wallet.connect({
-              client,
-              walletConnect: { showQrModal: true },
-            });
-          }
-
-          // return the wallet to set it as active wallet
-          return wallet;
-        })
-      }
-    >
-      {isConnecting ? "Connecting..." : "Connect"}
-    </button>
+    <ConnectButton
+      client={client}
+      wallets={wallets}
+      connectModal={{ size: "compact" }}
+    />
   );
 }
