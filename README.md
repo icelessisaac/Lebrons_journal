@@ -11,8 +11,7 @@ This project aims to create a decentralized messaging application using blockcha
 ### Team Members
 
 - **Yitan Li**: Responsible for designing the decentralized messaging app and implementing blockchain and wallet-based authentication.
-- **Bruce Chen**: Collaborating on blockchain integration and overall project architecture.
-- **Kevin Li**: Assisting with system architecture and gas fee optimization strategies.
+- **Bruce Chen**: Collaborating on blockchain integration and overall project architecture AND Assisting with system architecture and gas fee optimization strategies.
 
 ### Supervisor
 
