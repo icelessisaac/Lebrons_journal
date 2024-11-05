@@ -25,7 +25,6 @@ export default function Home() {
               url: "localhost:3000",
             }}
           />
-
           {/* 只有在钱包连接后才显示 ActiveAcc 组件 */}
           {activeAccount && <ActiveAcc />}
         </div>
@@ -47,9 +46,9 @@ function Header() {
       />
 
       <h1 className="text-2xl md:text-6xl font-semibold md:font-bold tracking-tighter mb-6 text-zinc-100">
-        thirdweb SDK
+        DIAO
         <span className="text-zinc-300 inline-block mx-1"> + </span>
-        <span className="inline-block -skew-x-6 text-blue-500"> Next.js </span>
+        <span className="inline-block -skew-x-6 text-blue-500"> CHAT </span>
       </h1>
 
       <p className="text-zinc-300 text-base">
