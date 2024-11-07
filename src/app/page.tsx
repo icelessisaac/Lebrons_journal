@@ -52,7 +52,7 @@ function Header() {
       </h1>
 
       <p className="text-zinc-300 text-base">
-        The true
+        The true Chating
         <code className="bg-zinc-800 text-zinc-300 px-2 rounded py-1 text-sm mx-1">
           DAPP
         </code>{" "}
