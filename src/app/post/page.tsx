@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { ethers } from "ethers";
 import { useContract, useSigner } from "thirdweb/react";
 import crypto from "crypto-js";
 
