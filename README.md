@@ -58,11 +58,11 @@ The project architecture comprises:
 2. Install dependencies:
    ```bash
    cd decentralized-messaging-app
-   npm install
+   pnpm install
    ```
 3. Start the development server:
    ```bash
-   npm run dev
+   pnpm run dev
    ```
 4. Access the application at `http://localhost:3000`.
 
