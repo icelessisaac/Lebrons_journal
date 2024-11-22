@@ -90,6 +90,6 @@ This project is licensed under the MIT License. See the `LICENSE` file for more 
 
 For any questions or further information, please contact:
 
-- **Yitan Li**: [yl9314@nyu.edu]
-- **Bruce Chen**: [yc5508@nyu.edu]
+- **Yitan Li**: [yl9314@nyu.edu](mailto:y9314@nyu.edu)
+- **Bruce Chen**: [yc5508@nyu.edu](mailto:yc5508@nyu.edu)
 - **Professor Lihua Xu**: Project Supervisor
