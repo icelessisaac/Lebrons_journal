@@ -58,11 +58,11 @@ The project architecture comprises:
 2. Install dependencies:
    ```bash
    cd decentralized-messaging-app
-   npm install
+   pnpm install
    ```
 3. Start the development server:
    ```bash
-   npm run dev
+   pnpm run dev
    ```
 4. Access the application at `http://localhost:3000`.
 
@@ -90,6 +90,6 @@ This project is licensed under the MIT License. See the `LICENSE` file for more 
 
 For any questions or further information, please contact:
 
-- **Yitan Li**: [yt@nyu.edu](mailto:yitan.li@nyu.edu)
-- **Bruce Chen**: [yc5508@nyu.edu](mailto:yitan.li@nyu.edu)
+- **Yitan Li**: [yl9314@nyu.edu](mailto:y9314@nyu.edu)
+- **Bruce Chen**: [yc5508@nyu.edu](mailto:yc5508@nyu.edu)
 - **Professor Lihua Xu**: Project Supervisor

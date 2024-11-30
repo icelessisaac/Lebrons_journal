@@ -64,7 +64,6 @@ export default function ReceiveMessages() {
 
     fetchMessages();
   }, [activeWallet, signer]);
-
   return (
     <div className="p-4 min-h-[100vh] flex items-center justify-center container max-w-screen-lg mx-auto">
       <div className="py-20">
