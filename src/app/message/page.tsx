@@ -12,6 +12,9 @@ export default function Message() {
   const activeAccount = useActiveAccount();
   const [recipientAddress, setRecipientAddress] = useState("");
   const [message, setMessage] = useState("");
+  const [fetchedMessage, setFetchedMessage] = useState("");
+  const [newFetchedMessage, setNewFetchedMessage] = useState("");
+  const [showDialog, setShowDialog] = useState(false);
 
   // 处理发送消息的函数
   const handleSendMessage = () => {
@@ -21,6 +24,15 @@ export default function Message() {
     }
     // 这里可以实现发送消息的逻辑
     console.log("Message sent to:", recipientAddress, "Message:", message);
+  };
+
+  // 处理获取消息的函数
+  const handleGetMessage = async () => {
+    // 这里可以实现获取消息的逻辑
+    // 假设 fetchMessageFromContract 是一个从智能合约获取消息的函数
+    const fetchedMessage = await fetchMessageFromContract(recipientAddress);
+    setFetchedMessage(fetchedMessage);
+    setShowDialog(true);
   };
 
   return (
@@ -75,10 +87,45 @@ export default function Message() {
                   Send Message
                 </button>
               </div>
+              <div className="w-full max-w-md mt-10">
+                <label
+                  className="block text-zinc-100 text-sm font-bold mb-2"
+                  htmlFor="newFetchedMessage"
+                >
+                  Receive your messages
+                </label>
+                <textarea
+                  id="newFetchedMessage"
+                  value={newFetchedMessage}
+                  onChange={(e) => setNewFetchedMessage(e.target.value)}
+                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  placeholder="Receive your message here"
+                />
+                <button
+                  onClick={handleGetMessage}
+                  className="mt-6 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                >
+                  Get Message
+                </button>
+              </div>
             </>
           )}
         </div>
       </div>
+      {showDialog && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white p-6 rounded shadow-lg">
+            <h2 className="text-xl font-bold mb-4">Fetched Message</h2>
+            <p>{fetchedMessage}</p>
+            <button
+              onClick={() => setShowDialog(false)}
+              className="mt-4 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </main>
   );
 }
@@ -110,4 +157,11 @@ function Header() {
       </p>
     </header>
   );
+}
+
+// 假设这是一个从智能合约获取消息的函数
+async function fetchMessageFromContract(recipientAddress) {
+  // 这里实现从智能合约获取消息的逻辑
+  // 返回一个示例消息
+  return "This is a fetched message from the blockchain.";
 }
