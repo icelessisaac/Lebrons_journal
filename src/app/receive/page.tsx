@@ -7,7 +7,8 @@ import {
   useReadContract,
 } from "thirdweb/react";
 import { getContract } from "thirdweb";
-import crypto from "crypto-js";
+// 使用 wasm 版本的 crypto-js
+import crypto from "@originjs/crypto-js-wasm";
 
 export default function ReceiveMessages() {
   const activeWallet = useActiveWallet();
