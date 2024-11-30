@@ -29,7 +29,6 @@ export default function Message() {
         <Header />
 
         <div className="flex flex-col items-center mb-20">
-          {/* ConnectButton 连接按钮 */}
           <ConnectButton
             client={client}
             appMetadata={{
