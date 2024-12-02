@@ -1,6 +1,6 @@
 import { useActiveAccount } from "thirdweb/react";
 
-export const ActiveAcc = () => {
+export const GetAddress = () => {
   const activeAccount = useActiveAccount();
 
   const triggerman = () => {

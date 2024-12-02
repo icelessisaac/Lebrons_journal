@@ -5,7 +5,7 @@ import Image from "next/image";
 import { ConnectButton, useActiveAccount } from "thirdweb/react";
 import thirdwebIcon from "@public/thirdweb.svg";
 import { client } from "@/server/client";
-import { ActiveAcc } from "@/components/activeAcc";
+import { ActiveAcc } from "@/components/getAddress";
 
 export default function Message() {
   // 使用 useActiveAccount 钩子来检查用户是否已连接钱包
