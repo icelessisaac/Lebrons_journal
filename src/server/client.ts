@@ -15,8 +15,8 @@ export const client = createThirdwebClient({
 export const myChain = ethereum;
 export const myChain1 = polygon;
 
-const contractAddress = "0x5feD8a97808977ee6d8fE0c5996c216a7599df46";
-const contractABI = [
+const contractAddresscounter = "0x5feD8a97808977ee6d8fE0c5996c216a7599df46";
+const contractABIcounter = [
   {
     inputs: [],
     name: "count",
@@ -59,9 +59,9 @@ const contractABI = [
   },
 ] as const;
 
-export const CONTRACT = {
+export const CONTRACTcounter = {
   client: client,
   chain: myChain,
-  address: contractAddress,
-  abi: contractABI,
+  address: contractAddresscounter,
+  abi: contractABIcounter,
 };

@@ -1,4 +1,4 @@
-import { CONTRACT } from "@/server/client";
+import { CONTRACTcounter } from "@/server/client";
 import { prepareContractCall } from "thirdweb";
 import { TransactionButton, useReadContract } from "thirdweb/react";
 
@@ -8,7 +8,7 @@ export function Counter() {
     isLoading: loadingCount,
     refetch,
   } = useReadContract({
-    contract: CONTRACT,
+    contract: CONTRACTcounter,
     method: "getCount",
   });
 
@@ -23,7 +23,7 @@ export function Counter() {
       <div className="flex justify-center gap-4 mt-6">
         <TransactionButton
           transaction={() =>
-            prepareContractCall({ contract: CONTRACT, method: "decrement" })
+            prepareContractCall({ contract: CONTRACTcounter, method: "decrement" })
           }
           onTransactionConfirmed={() => refetch()}
           onTransactionSent={() => console.log("decrementing")}
@@ -33,7 +33,7 @@ export function Counter() {
         </TransactionButton>
         <TransactionButton
           transaction={() =>
-            prepareContractCall({ contract: CONTRACT, method: "increment" })
+            prepareContractCall({ contract: CONTRACTcounter, method: "increment" })
           }
           onTransactionConfirmed={() => refetch()}
           onTransactionSent={() => console.log("incrementing")}
