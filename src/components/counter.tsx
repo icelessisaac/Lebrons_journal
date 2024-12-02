@@ -1,4 +1,4 @@
-import { CONTRACT} from "@/server/contracts/counter";
+import { CONTRACT } from "@/server/contracts/counter";
 import { prepareContractCall } from "thirdweb";
 import { TransactionButton, useReadContract } from "thirdweb/react";
 
