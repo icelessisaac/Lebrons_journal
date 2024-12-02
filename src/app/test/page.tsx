@@ -2,8 +2,8 @@
 import Image from "next/image";
 import { ConnectButton, useActiveAccount } from "thirdweb/react";
 import thirdwebIcon from "@public/thirdweb.svg";
-import { client, myChain } from "@/server/client";
-
+import { client } from "@/server";
+import { myChain } from "@/server/contracts/counter";
 import { GetAddress } from "@/components/getAddress";
 import { Counter } from "@/components/counter";
 export default function Home() {

@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { ConnectButton, useActiveAccount } from "thirdweb/react";
 import thirdwebIcon from "@public/thirdweb.svg";
-import { client, myChain } from "@/server/client";
+import { client } from "@/server";
 
 import { GetAddress } from "@/components/getAddress";
 
@@ -22,6 +22,7 @@ export default function Home() {
           {/* ConnectButton 连接按钮 */}
           <ConnectButton
             client={client}
+            //chain={myChain}
             appMetadata={{
               name: "Example App",
               url: "localhost:3000",

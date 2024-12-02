@@ -4,8 +4,8 @@ import { useState } from "react";
 import Image from "next/image";
 import { ConnectButton, useActiveAccount } from "thirdweb/react";
 import thirdwebIcon from "@public/thirdweb.svg";
-import { client } from "@/server/client";
-import { ActiveAcc } from "@/components/getAddress";
+import { client } from "@/server";
+import { GetAddress } from "@/components/getAddress";
 
 export default function Message() {
   // 使用 useActiveAccount 钩子来检查用户是否已连接钱包
@@ -51,7 +51,7 @@ export default function Message() {
           {/* 只有在钱包连接后才显示 ActiveAcc 组件和发送消息表单 */}
           {activeAccount && (
             <>
-              <ActiveAcc />
+              <GetAddress />
               <div className="w-full max-w-md mt-10">
                 <label
                   className="block text-zinc-100 text-sm font-bold mb-2"
