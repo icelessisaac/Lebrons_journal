@@ -1,10 +1,10 @@
 "use client";
 import { CONTRACT } from "@/server/contracts/message";
 import { useReadContract } from "thirdweb/react";
-import { useActiveAccount } from "thirdweb/react";
+//import { useActiveAccount } from "thirdweb/react";
 
 export function ReceiveMessage() {
-  const activeAccount = useActiveAccount();
+  // const activeAccount = useActiveAccount();
 
   const {
     data: messages,
@@ -14,6 +14,7 @@ export function ReceiveMessage() {
   } = useReadContract({
     contract: CONTRACT,
     method: "receiveMessagesContentWithSender",
+    //params: [activeAccount?.address]
   });
   console.log(messages);
   return (
