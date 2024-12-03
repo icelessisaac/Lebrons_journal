@@ -15,8 +15,7 @@ export function ReceiveMessage() {
   } = useReadContract({
     contract: CONTRACT,
     method: "receiveMessagesContentWithSender",
-    params: [walletAddress as string],
-    // 确保参数为 string[]
+    params: [walletAddress as string], // 确保参数为 string[]
   });
   console.log("message:", messages);
 
