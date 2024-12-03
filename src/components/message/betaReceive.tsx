@@ -1,33 +1,30 @@
 "use client";
+import { useContract, useContractRead } from "@thirdweb-dev/react";
 import { CONTRACT } from "@/server/contracts/message";
-import { useReadContract } from "thirdweb/react";
-import { useActiveAccount } from "thirdweb/react";
 
 export function ReceiveMessage() {
-  const activeAccount = useActiveAccount();
+  const { contract } = useContract(CONTRACT.address, CONTRACT.abi);
 
   const {
     data: messages,
     isLoading: loadingMessages,
     refetch,
-    isFetching,
-  } = useReadContract({
-    contract: CONTRACT,
-    method: "receiveMessagesContentWithSender",
-  });
-  console.log(messages);
+    error,
+  } = useContractRead(contract, "receiveMessagesContentWithSender");
+
   return (
     <div className="flex flex-col items-center mt-8">
       <h1 className="text-4xl font-bold mb-4">Received Messages</h1>
       <button
         onClick={() => refetch()}
         className="mb-4 px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-600 transition-all duration-300"
-        disabled={isFetching}
       >
-        {isFetching ? "Refreshing..." : "Refresh Messages"}
+        Refresh Messages
       </button>
-      {loadingMessages || isFetching ? (
+      {loadingMessages ? (
         <h2 className="text-2xl">...loading</h2>
+      ) : error ? (
+        <h2 className="text-2xl text-red-500">Error: {error.message}</h2>
       ) : messages && messages[0].length > 0 ? (
         <ul className="w-full max-w-lg">
           {messages[0].map((content: string, index: number) => (
