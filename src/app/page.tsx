@@ -4,7 +4,7 @@ import { ConnectButton, useActiveAccount } from "thirdweb/react";
 import thirdwebIcon from "@public/thirdweb.svg";
 import { client } from "@/server";
 
-import { GetAddress } from "@/components/getAddress";
+import { GetAddress } from "@/components/getAddressButton";
 
 export default function Home() {
   // 使用 useActiveAccount 钩子来检查用户是否已连接钱包

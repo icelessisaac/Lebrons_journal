@@ -1,9 +1,9 @@
 "use client";
-import { ConnectButton } from "thirdweb/react";
 
+import { ConnectButton } from "thirdweb/react";
 import { inAppWallet, createWallet } from "thirdweb/wallets";
 
-import { client } from "@/server/client";
+import { client } from "@/server";
 
 export default function Home() {
   return (

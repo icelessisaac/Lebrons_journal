@@ -6,7 +6,7 @@ import thirdwebIcon from "@public/thirdweb.svg";
 import { client } from "@/server";
 import { myChain } from "@/server/contracts/counter";
 
-import { GetAddress } from "@/components/getAddress";
+import { GetAddress } from "@/components/getAddressButton";
 import { Counter } from "@/components/counter";
 
 export default function Home() {
