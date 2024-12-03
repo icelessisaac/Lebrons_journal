@@ -3,7 +3,7 @@ import { client } from "..";
 
 export const myChain = polygon;
 
-export const contractAddress = "0x8C403f9e61C9Bd74B6c65fd3e4878176638300c9";
+export const contractAddress = "0x93fD7c2a32F34E2aCf65BB24F36e00b61AB31C86";
 export const contractABI = [
   {
     anonymous: false,
