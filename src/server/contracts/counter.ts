@@ -1,22 +1,10 @@
-import { createThirdwebClient, defineChain } from "thirdweb";
-import { ethereum, polygon } from "thirdweb/chains";
-// Replace this with your client ID string
-// refer to https://portal.thirdweb.com/typescript/v5/client on how to get a client ID
-const clientId = process.env.NEXT_PUBLIC_TEMPLATE_CLIENT_ID;
-
-if (!clientId) {
-  throw new Error("No client ID provided");
-}
-
-export const client = createThirdwebClient({
-  clientId: clientId,
-});
+import { ethereum } from "thirdweb/chains";
+import { client } from "..";
 
 export const myChain = ethereum;
-export const myChain1 = polygon;
 
-const contractAddresscounter = "0x5feD8a97808977ee6d8fE0c5996c216a7599df46";
-const contractABIcounter = [
+export const contractAddress = "0x5feD8a97808977ee6d8fE0c5996c216a7599df46";
+export const contractABI = [
   {
     inputs: [],
     name: "count",
@@ -59,9 +47,9 @@ const contractABIcounter = [
   },
 ] as const;
 
-export const CONTRACTcounter = {
+export const CONTRACT = {
   client: client,
   chain: myChain,
-  address: contractAddresscounter,
-  abi: contractABIcounter,
+  address: contractAddress,
+  abi: contractABI,
 };

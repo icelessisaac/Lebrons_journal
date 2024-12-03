@@ -1,18 +1,24 @@
 "use client";
-
 import { useState } from "react";
-import Image from "next/image";
-import { ConnectButton, useActiveAccount } from "thirdweb/react";
 import thirdwebIcon from "@public/thirdweb.svg";
-import { client } from "@/server/client";
-import { ActiveAcc } from "@/components/getAddress";
+import Image from "next/image";
+
+import {
+  ConnectButton,
+  useActiveAccount,
+  useReadContract,
+  TransactionButton,
+} from "thirdweb/react";
+import { prepareContractCall } from "thirdweb";
+
+import { client } from "@/server";
+import { myChain, CONTRACT } from "@/server/contracts/message";
 
 export default function Message() {
   // 使用 useActiveAccount 钩子来检查用户是否已连接钱包
   const activeAccount = useActiveAccount();
   const [recipientAddress, setRecipientAddress] = useState("");
   const [message, setMessage] = useState("");
-  const [fetchedMessage, setFetchedMessage] = useState("");
   const [newFetchedMessage, setNewFetchedMessage] = useState("");
   const [showDialog, setShowDialog] = useState(false);
 
@@ -30,7 +36,7 @@ export default function Message() {
   const handleGetMessage = async () => {
     // 这里可以实现获取消息的逻辑
     // 假设 fetchMessageFromContract 是一个从智能合约获取消息的函数
-    const fetchedMessage = await fetchMessageFromContract(recipientAddress);
+  
     setFetchedMessage(fetchedMessage);
     setShowDialog(true);
   };
@@ -43,6 +49,7 @@ export default function Message() {
         <div className="flex flex-col items-center mb-20">
           <ConnectButton
             client={client}
+            chain={myChain}
             appMetadata={{
               name: "Example App",
               url: "localhost:3000",
@@ -51,7 +58,6 @@ export default function Message() {
           {/* 只有在钱包连接后才显示 ActiveAcc 组件和发送消息表单 */}
           {activeAccount && (
             <>
-              <ActiveAcc />
               <div className="w-full max-w-md mt-10">
                 <label
                   className="block text-zinc-100 text-sm font-bold mb-2"
@@ -157,11 +163,4 @@ function Header() {
       </p>
     </header>
   );
-}
-
-// 假设这是一个从智能合约获取消息的函数
-async function fetchMessageFromContract(recipientAddress) {
-  // 这里实现从智能合约获取消息的逻辑
-  // 返回一个示例消息
-  return "This is a fetched message from the blockchain.";
 }

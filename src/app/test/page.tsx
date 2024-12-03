@@ -2,10 +2,13 @@
 import Image from "next/image";
 import { ConnectButton, useActiveAccount } from "thirdweb/react";
 import thirdwebIcon from "@public/thirdweb.svg";
-import { client, myChain } from "@/server/client";
 
-import { GetAddress } from "@/components/getAddress";
+import { client } from "@/server";
+import { myChain } from "@/server/contracts/counter";
+
+import { GetAddress } from "@/components/getAddressButton";
 import { Counter } from "@/components/counter";
+
 export default function Home() {
   // 使用 useActiveAccount 钩子来检查用户是否已连接钱包
   const activeAccount = useActiveAccount();
@@ -25,7 +28,6 @@ export default function Home() {
               url: "localhost:3000",
             }}
           />
-          {/* 只有在钱包连接后才显示 ActiveAcc 组件和导航按钮 */}
           {activeAccount && (
             <>
               <Counter />

@@ -2,9 +2,9 @@
 import Image from "next/image";
 import { ConnectButton, useActiveAccount } from "thirdweb/react";
 import thirdwebIcon from "@public/thirdweb.svg";
-import { client, myChain } from "@/server/client";
+import { client } from "@/server";
 
-import { GetAddress } from "@/components/getAddress";
+import { GetAddress } from "@/components/getAddressButton";
 
 export default function Home() {
   // 使用 useActiveAccount 钩子来检查用户是否已连接钱包
@@ -22,6 +22,7 @@ export default function Home() {
           {/* ConnectButton 连接按钮 */}
           <ConnectButton
             client={client}
+            //chain={myChain}
             appMetadata={{
               name: "Example App",
               url: "localhost:3000",
