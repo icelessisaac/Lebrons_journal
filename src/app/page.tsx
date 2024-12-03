@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import { ConnectButton, useActiveAccount } from "thirdweb/react";
 import thirdwebIcon from "@public/thirdweb.svg";
 import { client } from "@/server";
@@ -9,10 +10,6 @@ import { GetAddress } from "@/components/getAddressButton";
 export default function Home() {
   // 使用 useActiveAccount 钩子来检查用户是否已连接钱包
   const activeAccount = useActiveAccount();
-
-  const goToMessagePage = () => {
-    window.location.href = "/message";
-  };
 
   return (
     <main className="p-4 pb-10 min-h-[100vh] flex items-center justify-center container max-w-screen-lg mx-auto">
@@ -32,12 +29,12 @@ export default function Home() {
           {activeAccount && (
             <>
               <GetAddress />
-              <button
-                onClick={goToMessagePage}
+              <Link
+                href="/message"
                 className="mt-2 px-4 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold rounded-lg shadow-md hover:from-blue-600 hover:to-purple-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 transition duration-300"
               >
                 Go to Message Page
-              </button>
+              </Link>
             </>
           )}
         </div>

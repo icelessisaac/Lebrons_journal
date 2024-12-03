@@ -1,45 +1,19 @@
 "use client";
-import { useState } from "react";
 import thirdwebIcon from "@public/thirdweb.svg";
 import Image from "next/image";
 
-import {
-  ConnectButton,
-  useActiveAccount,
-  useReadContract,
-  TransactionButton,
-} from "thirdweb/react";
-import { prepareContractCall } from "thirdweb";
+import { ConnectButton, useActiveAccount } from "thirdweb/react";
 
 import { client } from "@/server";
-import { myChain, CONTRACT } from "@/server/contracts/message";
+import { myChain } from "@/server/contracts/message";
+
+// 导入 SendMessage 和 ReceiveMessage 组件
+import { SendMessage } from "@/components/message/sendMessage";
+import { ReceiveMessage } from "@/components/message/receiveMessage";
 
 export default function Message() {
   // 使用 useActiveAccount 钩子来检查用户是否已连接钱包
   const activeAccount = useActiveAccount();
-  const [recipientAddress, setRecipientAddress] = useState("");
-  const [message, setMessage] = useState("");
-  const [newFetchedMessage, setNewFetchedMessage] = useState("");
-  const [showDialog, setShowDialog] = useState(false);
-
-  // 处理发送消息的函数
-  const handleSendMessage = () => {
-    if (!recipientAddress || !message) {
-      alert("Please fill in both recipient address and message.");
-      return;
-    }
-    // 这里可以实现发送消息的逻辑
-    console.log("Message sent to:", recipientAddress, "Message:", message);
-  };
-
-  // 处理获取消息的函数
-  const handleGetMessage = async () => {
-    // 这里可以实现获取消息的逻辑
-    // 假设 fetchMessageFromContract 是一个从智能合约获取消息的函数
-  
-    setFetchedMessage(fetchedMessage);
-    setShowDialog(true);
-  };
 
   return (
     <main className="p-4 pb-10 min-h-[100vh] flex items-center justify-center container max-w-screen-lg mx-auto">
@@ -55,83 +29,18 @@ export default function Message() {
               url: "localhost:3000",
             }}
           />
-          {/* 只有在钱包连接后才显示 ActiveAcc 组件和发送消息表单 */}
+          {/* 只有在钱包连接后才显示 SendMessage 和 ReceiveMessage 组件 */}
           {activeAccount && (
             <>
-              <div className="w-full max-w-md mt-10">
-                <label
-                  className="block text-zinc-100 text-sm font-bold mb-2"
-                  htmlFor="recipientAddress"
-                >
-                  Recipient Address
-                </label>
-                <input
-                  type="text"
-                  id="recipientAddress"
-                  value={recipientAddress}
-                  onChange={(e) => setRecipientAddress(e.target.value)}
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  placeholder="Enter recipient address"
-                />
-                <label
-                  className="block text-zinc-100 text-sm font-bold mt-4 mb-2"
-                  htmlFor="message"
-                >
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  placeholder="Enter your message"
-                />
-                <button
-                  onClick={handleSendMessage}
-                  className="mt-6 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                >
-                  Send Message
-                </button>
-              </div>
-              <div className="w-full max-w-md mt-10">
-                <label
-                  className="block text-zinc-100 text-sm font-bold mb-2"
-                  htmlFor="newFetchedMessage"
-                >
-                  Receive your messages
-                </label>
-                <textarea
-                  id="newFetchedMessage"
-                  value={newFetchedMessage}
-                  onChange={(e) => setNewFetchedMessage(e.target.value)}
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  placeholder="Receive your message here"
-                />
-                <button
-                  onClick={handleGetMessage}
-                  className="mt-6 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                >
-                  Get Message
-                </button>
-              </div>
+              {/* 发送消息组件 */}
+              <SendMessage />
+
+              {/* 接收消息组件 */}
+              <ReceiveMessage />
             </>
           )}
         </div>
       </div>
-      {showDialog && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white p-6 rounded shadow-lg">
-            <h2 className="text-xl font-bold mb-4">Fetched Message</h2>
-            <p>{fetchedMessage}</p>
-            <button
-              onClick={() => setShowDialog(false)}
-              className="mt-4 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            >
-              Close
-            </button>
-          </div>
-        </div>
-      )}
     </main>
   );
 }
