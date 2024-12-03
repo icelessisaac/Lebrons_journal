@@ -1,11 +1,12 @@
 "use client";
 import { CONTRACT } from "@/server/contracts/message";
 import { useReadContract } from "thirdweb/react";
-//import { useActiveAccount } from "thirdweb/react";
+import { useActiveAccount } from "thirdweb/react";
 
 export function ReceiveMessage() {
-  // const activeAccount = useActiveAccount();
-
+  const activeAccount = useActiveAccount();
+  const walletAddress = activeAccount?.address;
+  console.log("walletAddress: ", walletAddress);
   const {
     data: messages,
     isLoading: loadingMessages,
@@ -14,9 +15,11 @@ export function ReceiveMessage() {
   } = useReadContract({
     contract: CONTRACT,
     method: "receiveMessagesContentWithSender",
-    //params: [activeAccount?.address]
+    params: [walletAddress as string],
+    // 确保参数为 string[]
   });
-  console.log(messages);
+  console.log("message:", messages);
+
   return (
     <div className="flex flex-col items-center mt-8">
       <h1 className="text-4xl font-bold mb-4">Received Messages</h1>
