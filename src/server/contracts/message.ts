@@ -3,7 +3,7 @@ import { client } from "..";
 
 export const myChain = polygon;
 
-export const contractAddress = "0x5feD8a97808977ee6d8fE0c5996c216a7599df46";
+export const contractAddress = "0x8C403f9e61C9Bd74B6c65fd3e4878176638300c9";
 export const contractABI = [
   {
     anonymous: false,
@@ -56,7 +56,13 @@ export const contractABI = [
     type: "event",
   },
   {
-    inputs: [],
+    inputs: [
+      {
+        internalType: "address",
+        name: "_address",
+        type: "address",
+      },
+    ],
     name: "receiveMessagesContentWithSender",
     outputs: [
       {
