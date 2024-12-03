@@ -28,7 +28,6 @@ export default function Home() {
               url: "localhost:3000",
             }}
           />
-          {/* 只有在钱包连接后才显示 ActiveAcc 组件和导航按钮 */}
           {activeAccount && (
             <>
               <Counter />
