@@ -31,13 +31,13 @@ export default function Message() {
           />
           {/* 只有在钱包连接后才显示 SendMessage 和 ReceiveMessage 组件 */}
           {activeAccount && (
-            <>
+            <div className="flex flex-wrap justify-center gap-8 mt-10">
               {/* 发送消息组件 */}
               <SendMessage />
 
               {/* 接收消息组件 */}
               <ReceiveMessage />
-            </>
+            </div>
           )}
         </div>
       </div>
