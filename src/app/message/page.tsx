@@ -33,12 +33,12 @@ export default function Message() {
           {activeAccount && (
             <div className="flex flex-row justify-between items-start gap-8 mt-10 w-full">
               {/* 发送消息组件 */}
-              <div className="flex-1 min-w-[45%]">
+              <div className="flex-1 min-w-[40%]">
                 <SendMessage />
               </div>
 
               {/* 接收消息组件 */}
-              <div className="flex-1 min-w-[45%]">
+              <div className="flex-1 min-w-[60%]">
                 <ReceiveMessage />
               </div>
             </div>

@@ -39,7 +39,7 @@ export function SendMessage() {
             console.log("Message sent successfully");
           }}
           onTransactionSent={() => console.log("Sending message...")}
-          className="px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-600 transition-all duration-300"
+          className="px-4 py-2 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-300 transition-all duration-300"
         >
           Send Message
         </TransactionButton>
