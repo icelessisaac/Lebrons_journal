@@ -14,7 +14,7 @@ export default function Home() {
       <div className="py-20">
         <Header />
         <div className="flex flex-col items-center mb-20">
-          {/* ConnectButton 连接按钮 */}
+          {/* ConnectButton  */}
           <ConnectButton
             client={client}
             //chain={myChain}
