@@ -18,7 +18,7 @@ export default function Message() {
           <div className="h-[92vh] border rounded border-gray-700 bg-black p-6 overflow-y-auto">
             {/* Header Row */}
             <div className="flex justify-between items-center mb-6">
-              <h1 className="text-4xl font-bold">Messages</h1>
+              <h1 className="text-4xl font-bold">Entries</h1>
               <ConnectButton
                 client={client}
                 chain={myChain}

@@ -29,8 +29,7 @@ export function ReceiveMessage() {
     : [];
 
   return (
-    <div className="flex flex-col items-center mt-8 w-full">
-      <h1 className="text-4xl font-bold mb-4">Received Messages</h1>
+    <div>
       <Button
         onClick={() => refetch()}
         className="mb-4"
@@ -43,10 +42,10 @@ export function ReceiveMessage() {
             Refreshing...
           </div>
         ) : (
-          "Refresh Messages"
+          "Refresh"
         )}
       </Button>
-
+    <div className="flex flex-col items-center mt-8 w-full">
       {loadingMessages || isFetching ? (
         <div className="mt-4 flex items-center gap-2">
           <Loader2 className="animate-spin" />
@@ -60,6 +59,7 @@ export function ReceiveMessage() {
           <p>You have not received any messages yet. Please check back later.</p>
         </div>
       )}
+    </div>
     </div>
   );
 }
