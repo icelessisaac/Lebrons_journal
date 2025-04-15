@@ -3,7 +3,7 @@ import { CONTRACT } from "@/server/contracts/message";
 import { useReadContract, useActiveAccount } from "thirdweb/react";
 import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
-import AccordionEntry from "@/components/AccordionEntry";
+import AccordionEntry from "@/components/message/AccordionEntry";
 
 export function ReceiveMessage() {
   const activeAccount = useActiveAccount();
