@@ -1,24 +1,43 @@
 "use client";
-import { ConnectButton, useActiveAccount } from "thirdweb/react";
-
+import { useActiveAccount } from "thirdweb/react";
+import { ConnectButton } from "thirdweb/react";
 import { client } from "@/server";
 import { myChain } from "@/server/contracts/message";
 
-// 导入 SendMessage 和 ReceiveMessage 组件
-import { SendMessage } from "@/components/message/sendMessage";
 import { ReceiveMessage } from "@/components/message/receiveMessage";
-import { Header } from "@/components/header";
+import { SendMessage } from "@/components/message/sendMessage";
 
 export default function Message() {
-  // 使用 useActiveAccount 钩子来检查用户是否已连接钱包
   const activeAccount = useActiveAccount();
 
   return (
-    <main className="p-4 pb-10 min-h-[100vh] flex items-center justify-center container max-w-screen-lg mx-auto">
-      <div className="py-20 w-full">
-        <Header />
+    <main className="min-h-full max-h-full flex flex-col justify-start container max-w-screen-lg mx-auto">
+      {activeAccount ? (
+        <div className="grid grid-cols-2 gap-8 mt-6">
+          {/* Left Column: Received Messages */}
+          <div className="h-[92vh] border rounded border-gray-700 bg-black p-6 overflow-y-auto">
+            {/* Header Row */}
+            <div className="flex justify-between items-center mb-6">
+              <h1 className="text-4xl font-bold">Messages</h1>
+              <ConnectButton
+                client={client}
+                chain={myChain}
+                appMetadata={{
+                  name: "Example App",
+                  url: "localhost:3000",
+                }}
+              />
+            </div>
+            <ReceiveMessage />
+          </div>
 
-        <div className="flex flex-col items-center mb-20">
+          {/* Right Column: Send Message */}
+          <div className="h-[92vh] border rounded border-gray-700 bg-black p-4 overflow-y-auto">
+            <SendMessage />
+          </div>
+        </div>
+      ) : (
+        <div className="flex items-center justify-center min-h-screen">
           <ConnectButton
             client={client}
             chain={myChain}
@@ -27,22 +46,8 @@ export default function Message() {
               url: "localhost:3000",
             }}
           />
-          {/* 只有在钱包连接后才显示 SendMessage 和 ReceiveMessage 组件 */}
-          {activeAccount && (
-            <div className="flex flex-row justify-between items-start gap-8 mt-10 w-full">
-              {/* 发送消息组件 */}
-              <div className="flex-1 min-w-[40%]">
-                <SendMessage />
-              </div>
-
-              {/* 接收消息组件 */}
-              <div className="flex-1 min-w-[60%]">
-                <ReceiveMessage />
-              </div>
-            </div>
-          )}
         </div>
-      </div>
+      )}
     </main>
   );
 }
